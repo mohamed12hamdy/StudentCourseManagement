@@ -3,6 +3,7 @@ package com.example.StudentManagement.Controller;
 import com.example.StudentManagement.Services.StudentService;
 import com.example.StudentManagement.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,12 +15,13 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping("/students")
-    public List<Student> getAllStudents() throws Exception {
-        return studentService.getAllStudents().getBody();
+    public ResponseEntity<List<Student>> getAllStudents() throws Exception {
+        return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);
     }
     @PostMapping("/students")
-    public Student AddStudent(@RequestBody Student student) throws Exception {
-        return studentService.Add(student).getBody();
+    public ResponseEntity <Student> AddStudent(@RequestBody Student student) throws Exception {
+        Student savedStudent = studentService.Add(student);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedStudent);
     }
 
 
