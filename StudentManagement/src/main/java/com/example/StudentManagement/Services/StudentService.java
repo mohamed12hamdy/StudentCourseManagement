@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -29,6 +30,9 @@ public class StudentService {
     public List<Student> getAllStudents() {
        return studentrepository.findAll();
 
+    }
+    public Student FindStudentById( int id){
+        return studentrepository.findById(id).orElse(null);
     }
 
 }

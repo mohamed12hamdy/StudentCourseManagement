@@ -23,6 +23,18 @@ public class StudentController {
         Student savedStudent = studentService.Add(student);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedStudent);
     }
+    @GetMapping("/students/{id}")
+    public ResponseEntity<Student>GetStudentById(@PathVariable int id){
+     Student student = studentService.FindStudentById(id);
+      if(student != null) {
+          return ResponseEntity.ok(student);
+
+      }
+      else{
+              return ResponseEntity.notFound().build();
+          }
+    }
+
 
 
 }
