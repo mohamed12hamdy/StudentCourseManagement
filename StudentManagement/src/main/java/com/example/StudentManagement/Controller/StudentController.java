@@ -15,11 +15,11 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping("/students")
-    public ResponseEntity<List<Student>> getAllStudents() throws Exception {
+    public ResponseEntity<List<Student>> getAllStudents()  {
         return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);
     }
     @PostMapping("/students")
-    public ResponseEntity <Student> AddStudent(@RequestBody Student student) throws Exception {
+    public ResponseEntity <Student> AddStudent(@RequestBody Student student)  {
         Student savedStudent = studentService.Add(student);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedStudent);
     }
