@@ -1,28 +1,30 @@
 package com.example.StudentManagement.Services;
 
 import com.example.StudentManagement.Dao.StudentRepository;
+import com.example.StudentManagement.Exception.CourseAlreadyExistsException;
+import com.example.StudentManagement.Exception.StudentAlreadyExistsException;
+import com.example.StudentManagement.models.Course;
 import com.example.StudentManagement.models.Student;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ProblemDetail;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.ErrorResponse;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.logging.Handler;
+import java.util.Optional;
 
 @Service
 public class StudentService {
     @Autowired
     private StudentRepository studentrepository;
 
-    public Student Add(@RequestBody Student student) {
 
+
+    public Student AddStudent(@RequestBody Student student) {
+        Optional<Student> ExistingStudent  = studentrepository.findByEmail(student.getEmail());
+        if(ExistingStudent.isPresent()){
+            throw new StudentAlreadyExistsException("Sorry,this Student already exists");
+        }
         return studentrepository.save(student);
     }
 

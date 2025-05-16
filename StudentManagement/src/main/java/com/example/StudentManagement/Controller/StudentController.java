@@ -20,7 +20,7 @@ public class StudentController {
     }
     @PostMapping("/students")
     public ResponseEntity <Student> AddStudent(@RequestBody Student student)  {
-        Student savedStudent = studentService.Add(student);
+        Student savedStudent = studentService.AddStudent(student);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedStudent);
     }
     @GetMapping("/students/{id}")

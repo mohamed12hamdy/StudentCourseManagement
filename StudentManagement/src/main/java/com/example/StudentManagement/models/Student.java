@@ -19,16 +19,16 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
-    @JsonProperty("Name")
-    private String Name;
 
-    @Column(name = "Email", unique = true)
-    @JsonProperty("Email")
-    private String Email;
+    private String name;
+
+    @Column(name = "email", unique = true)
+
+    private String email;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @JsonProperty("DateOfBirth")
-    private LocalDate DateOfBirth;
+
+    private LocalDate dateOfBirth;
 
 
 }
