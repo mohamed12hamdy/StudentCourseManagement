@@ -1,7 +1,5 @@
-package com.example.StudentManagement.Controller;
+package com.example.StudentManagement.Controllers;
 
-import com.example.StudentManagement.Dao.CourseRepository;
-import com.example.StudentManagement.Dao.StudentRepository;
 import com.example.StudentManagement.Services.CourseService;
 import com.example.StudentManagement.models.Course;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class CourseController {
@@ -36,6 +33,8 @@ public class CourseController {
                 else
                     return ResponseEntity.notFound().build();
     }
+
+
 
 
 

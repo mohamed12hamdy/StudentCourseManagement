@@ -1,4 +1,4 @@
-package com.example.StudentManagement.Controller;
+package com.example.StudentManagement.Controllers;
 
 import com.example.StudentManagement.Services.EnrollmentService;
 import com.example.StudentManagement.models.Enrollment;
@@ -22,5 +22,7 @@ public class EnrollmentController {
             return new ResponseEntity<>("Student is already enrolled in this course", HttpStatus.CONFLICT);
 
     }
+
+
 
 }

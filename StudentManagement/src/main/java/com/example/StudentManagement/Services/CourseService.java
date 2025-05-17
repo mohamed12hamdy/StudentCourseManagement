@@ -28,6 +28,9 @@ public class CourseService {
         return courseRepository.findById(id).orElse(null);
 
     }
+    public List<Course>GetAllcoursesforstud(int id){
+         return courseRepository.getCoursesByStudentId(id).orElse(null);
+    }
 
 
 }
