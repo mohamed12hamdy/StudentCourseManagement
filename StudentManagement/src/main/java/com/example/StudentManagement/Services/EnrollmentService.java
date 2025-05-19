@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.DelegatingServerHttpResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EnrollmentService {
     @Autowired
@@ -20,5 +22,9 @@ public class EnrollmentService {
 
         }
 
+    }
+    public List<String>GetAllcoursesForstud(int StudentId){
+        List<String>CoursesNames = enrollmentRepository.findCourseNamesByStudentId(StudentId);
+         return CoursesNames;
     }
 }
