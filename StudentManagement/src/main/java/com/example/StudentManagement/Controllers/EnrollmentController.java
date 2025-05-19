@@ -31,6 +31,12 @@ public class EnrollmentController {
        return new ResponseEntity<>(enrollmentService.GetAllcoursesForstud(StudentId),HttpStatus.OK);
     }
 
+    @GetMapping("/Enrolledstudents/{courseId}/courses")
+    @Operation(summary = "This endpoint is used to get student names that joined a specific course")
+    public ResponseEntity<List<String>>GetAllStudentNamesForCourse(@PathVariable  int courseId){
+        return new ResponseEntity<>(enrollmentService.GetAllStudentNamesForCourse(courseId),HttpStatus.OK);
+    }
+
 
 
 }

@@ -27,4 +27,8 @@ public class EnrollmentService {
         List<String>CoursesNames = enrollmentRepository.findCourseNamesByStudentId(StudentId);
          return CoursesNames;
     }
+    public List<String>GetAllStudentNamesForCourse(int courseId){
+        List<String>StudentsNames = enrollmentRepository.findStudentNamesByCourseId(courseId);
+        return StudentsNames;
+    }
 }

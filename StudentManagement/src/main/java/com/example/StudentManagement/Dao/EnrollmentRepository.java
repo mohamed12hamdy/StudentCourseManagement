@@ -15,6 +15,8 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment,Integer> 
     List<String> findCourseNamesByStudentId(@Param("studentId") int studentId);
 
     /// /this is performs inner join between courses and enrollment table by courseId to get the name
+    @Query("SELECT e.student.name FROM Enrollment e WHERE e.course.id = :courseId")
+    List<String> findStudentNamesByCourseId(@Param("courseId") int courseId);
 
 
 }
