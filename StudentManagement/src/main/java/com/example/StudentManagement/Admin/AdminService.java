@@ -17,6 +17,6 @@ public class AdminService implements UserDetailsService {
         Admin admin = adminRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Admin not found"));
 
-        return new User(admin.getUserName(), admin.getPassword(), new ArrayList<>());
+        return new User(admin.getUsername(), admin.getPassword(), new ArrayList<>());
     }
 }
