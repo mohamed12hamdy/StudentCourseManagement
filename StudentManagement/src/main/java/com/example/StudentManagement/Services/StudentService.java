@@ -37,4 +37,12 @@ public class StudentService {
         return studentrepository.findById(id).orElse(null);
     }
 
+    public Student UpdateStudent(int id, Student UpdatedStudent){
+        Student student = studentrepository.findById(id).orElseThrow(() -> new RuntimeException("Student not found"));
+        student.setName(UpdatedStudent.getName());
+        student.setEmail(UpdatedStudent.getEmail());
+        student.setDateOfBirth(UpdatedStudent.getDateOfBirth());
+        return studentrepository.save(student);
+    }
+
 }

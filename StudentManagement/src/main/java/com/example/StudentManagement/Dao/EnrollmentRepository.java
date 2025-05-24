@@ -2,6 +2,7 @@ package com.example.StudentManagement.Dao;
 
 import com.example.StudentManagement.models.Course;
 import com.example.StudentManagement.models.Enrollment;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,5 +19,7 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment,Integer> 
     @Query("SELECT e.student.name FROM Enrollment e WHERE e.course.id = :courseId")
     List<String> findStudentNamesByCourseId(@Param("courseId") int courseId);
 
+    @Transactional
+    void deleteByStudentIdAndCourseId(int studentId, int courseId);
 
 }

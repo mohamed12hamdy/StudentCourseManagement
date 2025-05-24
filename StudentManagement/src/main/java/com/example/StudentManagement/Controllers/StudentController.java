@@ -38,6 +38,13 @@ public class StudentController {
               return ResponseEntity.notFound().build();
           }
     }
+    @Operation(summary = "This endpoint is used to update student data")
+    @PutMapping("/student/update/{id}")
+
+    public ResponseEntity<Student>UpdateStudentData(@PathVariable int id,@RequestBody Student UpdatedStudent){
+        Student student = studentService.UpdateStudent(id,UpdatedStudent);
+        return ResponseEntity.ok(student);
+    }
 
 
 

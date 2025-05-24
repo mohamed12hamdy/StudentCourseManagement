@@ -1,5 +1,6 @@
 package com.example.StudentManagement.Admin;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ public class AuthController {
 
     @Autowired
     private JwtUtil jwtUtil;
+    @Operation(summary = "Authenticate admin and return a JWT token for accessing secured endpoints.")
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Admin admin) {

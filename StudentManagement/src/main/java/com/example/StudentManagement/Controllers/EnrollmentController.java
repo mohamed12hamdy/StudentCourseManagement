@@ -36,6 +36,13 @@ public class EnrollmentController {
     public ResponseEntity<List<String>>GetAllStudentNamesForCourse(@PathVariable  int courseId){
         return new ResponseEntity<>(enrollmentService.GetAllStudentNamesForCourse(courseId),HttpStatus.OK);
     }
+    @DeleteMapping("/Unroll")
+    @Operation(summary = "This endpoint is used to unroll student from specific course")
+    public  ResponseEntity<String> UnrollStudentFromCourse(@RequestParam int studentId, @RequestParam int courseId){
+        enrollmentService.DeleteStudentFromCourse(studentId,courseId);
+        return ResponseEntity.ok("Student unenrolled from course successfully");
+    }
+
 
 
 

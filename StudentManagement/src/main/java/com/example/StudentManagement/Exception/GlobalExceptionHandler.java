@@ -16,5 +16,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleStudentAlreadyExists(StudentAlreadyExistsException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(EnrollmentNotFoundException.class)
+    public ResponseEntity<String> handleEnrollmentNotFound(EnrollmentNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 
 }
