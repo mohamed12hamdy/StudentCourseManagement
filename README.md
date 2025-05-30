@@ -1,52 +1,54 @@
 🎓 Student Course Enrollment System
-A Spring Boot backend project that manages student enrollments in courses with JWT-based admin authentication.
+
+A Spring Boot backend application for managing student enrollments in courses. The system includes features for authentication, student and course management, and enrollment handling. Authentication is handled using JWT (JSON Web Tokens) to secure API endpoints.
 
 🚀 Base URL
-
 http://localhost:8080
-🔐 Authentication (auth-controller)
-▶️ POST /login
-Description: Authenticate admin and return a JWT token.
-Request Body:
 
+🔐 Authentication (AuthController)
+POST /login
+Description:
+Authenticates an admin user and returns a JWT token for accessing secured endpoints.
+
+Request Body:
 {
   "username": "admin",
   "password": "admin"
 }
 Response:
-
 {
   "token": "JWT_TOKEN_HERE"
 }
-Use the returned token to access secured endpoints by adding it in headers:
+
+🔒 Note: Include the returned token in the Authorization header when calling secured APIs:
 Authorization: Bearer JWT_TOKEN_HERE
 
-👤 Student Controller (student-controller)
-🔄 PUT /student/update/{id}
-Description: Update student data.
+👤 Student Management (StudentController)
+PUT /student/update/{id}
+Update student information by their ID.
 
-📥 POST /students
-Description: Add a new student.
+POST /students
+Add a new student to the system.
 
-📤 GET /students
-Description: Get all students.
+GET /students
+Retrieve a list of all students.
 
-📌 GET /students/{id}
-Description: Get a specific student by ID.
+GET /students/{id}
+Retrieve details of a specific student by their ID.
 
-📚 Course Controller (course-controller)
-📤 GET /Courses
-Description: Retrieve all courses.
+📚 Course Management (CourseController)
+GET /Courses
+Retrieve all available courses.
 
-📥 POST /Courses
-Description: Add a new course.
+POST /Courses
+Add a new course to the system.
 
-📌 GET /Courses/{id}
-Description: Get course details by ID.
+GET /Courses/{id}
+Retrieve details of a specific course by its ID.
 
-📩 Enrollment Controller (enrollment-controller)
-📥 POST /Enroll
-Description: Enroll a student in a specific course.
+📩 Enrollment Management (EnrollmentController)
+POST /Enroll
+Enroll a student in a specific course.
 
 Sample Request:
 
@@ -54,24 +56,27 @@ Sample Request:
   "studentId": 1,
   "courseId": 2
 }
-❌ DELETE /Unroll
-Description: Unroll student from a specific course.
+
+DELETE /Unroll
+Remove a student from a specific course.
 
 Sample Request:
+
 {
   "studentId": 1,
   "courseId": 2
 }
-📚 GET /Enroll/{StudentId}/courses
-Description: Get course names a student is enrolled in.
+GET /Enroll/{studentId}/courses
+Retrieve the list of course names a student is enrolled in.
 
-👥 GET /Enrolledstudents/{courseId}/courses
-Description: Get student names enrolled in a course.
+GET /Enrolledstudents/{courseId}/courses
+Retrieve the names of students enrolled in a specific course.
 
-🧪 API Testing (Swagger UI)
-Once the application is running, access Swagger UI at:
+🧪 API Testing
+Access Swagger UI for interactive API testing once the application is running:
 
 http://localhost:8080/swagger-ui/index.html
+
 ✅ Requirements
 Java 17+
 
@@ -79,4 +84,18 @@ Maven or Gradle
 
 Spring Boot
 
-JWT for authentication
+JWT (JSON Web Token) for Authentication
+
+
+
+
+
+
+
+
+
+
+
+
+
+
